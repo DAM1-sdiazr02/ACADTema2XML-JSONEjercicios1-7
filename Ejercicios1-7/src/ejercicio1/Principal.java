@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.lang.model.element.Element;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -84,6 +84,19 @@ public class Principal {
 			System.out.println("Se llegó al final del fichero...!");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Casteo incorrecto");
+		}finally {
+			try {
+				ois.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				fis.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -130,8 +143,6 @@ public class Principal {
 				crearElementosXml("email", contacto.getEmail(), nodo, documento);
 				crearElementosXml("telefono", String.valueOf(contacto.getTelefono()), nodo, documento);
 
-				
-				
 			}
 
 			Source origen = new DOMSource(documento);
