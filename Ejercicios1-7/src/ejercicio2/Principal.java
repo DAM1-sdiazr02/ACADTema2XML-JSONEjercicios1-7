@@ -85,7 +85,7 @@ public class Principal {
 
 			DOMImplementation implementacion = constructor.getDOMImplementation();
 
-			Document documento = implementacion.createDocument(null, "Libro", null);
+			Document documento = implementacion.createDocument(null, "libros", null);
 			documento.setXmlVersion("1.0");
 
 			Iterator it = libros.iterator();

@@ -127,7 +127,7 @@ public class Principal {
 			
 			DocumentBuilder constructor = creadorFichero.newDocumentBuilder();
 			DOMImplementation implementacion = constructor.getDOMImplementation();
-			Document documento = implementacion.createDocument(null, "Contacto", null);
+			Document documento = implementacion.createDocument(null, "contactos", null);
 			documento.setXmlVersion("1.0");
 			Iterator it = contactos.iterator();
 

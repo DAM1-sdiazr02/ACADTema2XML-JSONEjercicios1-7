@@ -1,4 +1,4 @@
-package ejercicio3;
+package ejercicio4;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class LecturaXMLDOM {
-	private static final String FICHERO = "contactos.xml";
+	private static final String FICHERO = "libros.xml";
 
 	public static void leerFicheroXML() {
 
@@ -24,17 +24,17 @@ public class LecturaXMLDOM {
 			Document documento = constructor.parse(new File(FICHERO));
 
 			documento.getDocumentElement().normalize();
-			NodeList contactos = documento.getElementsByTagName("contactos");
+			NodeList libros = documento.getElementsByTagName("libro");
 
 			// recorremos la lista
-			for (int i = 0; i < contactos.getLength(); i++) {
-				Node contacto = contactos.item(i);	//Creo un nodo auxiliar contacto en el asigno el elemento por el que itera.
-				Element elem = (Element) contacto;	//Lo casteo a elemento para obtener los datos.
+			for (int i = 0; i < libros.getLength(); i++) {
+				Node libro = libros.item(i); // Creo un nodo auxiliar contacto en el asigno el elemento por el que
+												// itera.
+				Element elem = (Element) libro; // Lo casteo a elemento para obtener los datos.
 				// Se obtienen los elementos del nodo.
-				System.out.println("Nombre: "+getNodo("nombre", elem));
-				System.out.println("Apellidos: "+getNodo("apellidos", elem));
-				System.out.println("Email: "+getNodo("email", elem));
-				System.out.println("Teléfono: "+getNodo("telefono", elem));
+				System.out.println("Titulo: " + getNodo("titulo", elem) + "-->ISBN:" + getAtributo("ISBN", elem));
+				System.out.println("Autor: " + getNodo("autor", elem));
+				System.out.println("Editorial: " + getNodo("editorial", elem) + "\n");
 			}
 
 		} catch (ParserConfigurationException e) {
@@ -49,8 +49,14 @@ public class LecturaXMLDOM {
 		}
 	}
 
+	public static String getAtributo(String etiqueta, Element elem) {
+		String aux = elem.getAttribute(etiqueta); //Obtengo el elemento.
+		return aux;
+	}
+
 	public static String getNodo(String etiqueta, Element elemento) {
-		Node aux = elemento.getElementsByTagName(etiqueta).item(0).getFirstChild(); //Obtengo por etiqueta el hijo del primer item.
+		Node aux = elemento.getElementsByTagName(etiqueta).item(0).getFirstChild(); // Obtengo por etiqueta el hijo del
+																					// primer item.
 		return aux.getTextContent();
 	}
 }
