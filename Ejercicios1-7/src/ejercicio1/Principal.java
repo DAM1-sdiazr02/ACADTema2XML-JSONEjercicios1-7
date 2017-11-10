@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -84,7 +83,7 @@ public class Principal {
 			System.out.println("Se llegó al final del fichero...!");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Casteo incorrecto");
-		}finally {
+		} finally {
 			try {
 				ois.close();
 			} catch (IOException e) {
@@ -102,6 +101,7 @@ public class Principal {
 
 	/**
 	 * Relleno el ArrayList con los contactos del fichero.
+	 * 
 	 * @param ois
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -116,15 +116,13 @@ public class Principal {
 	}
 
 	/**
-	 * Genera el fichero xml 
+	 * Genera el fichero xml
 	 */
 	public static void crearFicheroXML() {
-		
-		
+
 		DocumentBuilderFactory creadorFichero = DocumentBuilderFactory.newInstance();
 		try {
-		
-			
+
 			DocumentBuilder constructor = creadorFichero.newDocumentBuilder();
 			DOMImplementation implementacion = constructor.getDOMImplementation();
 			Document documento = implementacion.createDocument(null, "contactos", null);
@@ -133,9 +131,9 @@ public class Principal {
 
 			while (it.hasNext()) {
 				Contacto contacto = (Contacto) it.next();
-				
-				//Element nodo =  (Element) documento.createElement("contacto");
-				org.w3c.dom.Element nodo =  documento.createElement("contacto");
+
+				// Element nodo = (Element) documento.createElement("contacto");
+				org.w3c.dom.Element nodo = documento.createElement("contacto");
 
 				documento.getDocumentElement().appendChild((Node) nodo);
 				crearElementosXml("nombre", contacto.getNombre(), nodo, documento);
@@ -146,15 +144,14 @@ public class Principal {
 			}
 
 			Source origen = new DOMSource(documento);
-			
+
 			Result resultado = new StreamResult(new java.io.File("contactos.xml"));
 			Transformer transformador = TransformerFactory.newInstance().newTransformer();
 			transformador.transform(origen, resultado);
-			
+
 			Result console = new StreamResult(System.out);
 			transformador.transform(origen, console);
-			
-			
+
 		} catch (ParserConfigurationException e) {
 			System.out.println("Excepción en el Builder.");
 		} catch (TransformerConfigurationException e) {
@@ -169,7 +166,7 @@ public class Principal {
 	}
 
 	static void crearElementosXml(String datoContacto, String cadena, org.w3c.dom.Element nodo, Document documento) {
-		org.w3c.dom.Element elemento =  documento.createElement(datoContacto);
+		org.w3c.dom.Element elemento = documento.createElement(datoContacto);
 		Text texto = documento.createTextNode(cadena);
 		((Node) elemento).appendChild(texto);
 		((Node) nodo).appendChild((Node) elemento);
@@ -177,8 +174,8 @@ public class Principal {
 
 	public static void main(String[] args) {
 		// escribirFichero();
-		 leerFichero();
-crearFicheroXML();
+		leerFichero();
+		crearFicheroXML();
 	}
 
 }

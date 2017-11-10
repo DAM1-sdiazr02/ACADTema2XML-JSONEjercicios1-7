@@ -16,6 +16,9 @@ import org.xml.sax.SAXException;
 public class LecturaXMLDOM {
 	private static final String FICHERO = "contactos.xml";
 
+	/**
+	 * Lee un fichero XML con DOM
+	 */
 	public static void leerFicheroXML() {
 
 		try {

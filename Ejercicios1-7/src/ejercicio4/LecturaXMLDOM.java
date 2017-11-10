@@ -16,6 +16,9 @@ import org.xml.sax.SAXException;
 public class LecturaXMLDOM {
 	private static final String FICHERO = "libros.xml";
 
+	/**
+	 * Encargado de leer con DOM un XML.
+	 */
 	public static void leerFicheroXML() {
 
 		try {
@@ -49,11 +52,29 @@ public class LecturaXMLDOM {
 		}
 	}
 
+	/**
+	 * Obtengo el atributo de un nodo.
+	 * 
+	 * @param etiqueta
+	 *            String que lleva en el xml.
+	 * @param elem
+	 *            Elemento al que va anclado
+	 * @return String devuelto
+	 */
 	public static String getAtributo(String etiqueta, Element elem) {
-		String aux = elem.getAttribute(etiqueta); //Obtengo el elemento.
+		String aux = elem.getAttribute(etiqueta); // Obtengo el elemento.
 		return aux;
 	}
 
+	/**
+	 * Obtengo el campo de un nodo
+	 * 
+	 * @param etiqueta
+	 *            campo a obtener
+	 * @param elemento
+	 *            elemento al que va anclado
+	 * @return String devuelto.
+	 */
 	public static String getNodo(String etiqueta, Element elemento) {
 		Node aux = elemento.getElementsByTagName(etiqueta).item(0).getFirstChild(); // Obtengo por etiqueta el hijo del
 																					// primer item.

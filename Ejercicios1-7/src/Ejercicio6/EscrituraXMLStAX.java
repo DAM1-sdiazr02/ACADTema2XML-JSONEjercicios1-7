@@ -9,6 +9,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 public class EscrituraXMLStAX {
+	
 	public static final String FICHERO = "librosstax.xml";
 
 	public static String pideCadena(String cadena) {
@@ -17,6 +18,9 @@ public class EscrituraXMLStAX {
 		return entrada.nextLine();
 	}
 
+	/**
+	 * Escribe un xml con autores a gusto del usuario.
+	 */
 	public static void escribirXML() {
 
 		try {

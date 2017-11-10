@@ -70,12 +70,15 @@ public class Principal {
 
 	public static ArrayList<Libro> obtenerLibros(ObjectInputStream ois, ArrayList<Libro> libros)
 			throws ClassNotFoundException, IOException {
-		Libro libro;
-		while (true) {
+				while (true) {
 			libros.add((Libro) ois.readObject());
 		}
 	}
 
+	/**
+	 * 
+	 * @param libros
+	 */
 	public static void crearLibrosDesdeXML(ArrayList<Libro> libros) {
 		try {
 			DocumentBuilderFactory fabrica = DocumentBuilderFactory.newInstance();
