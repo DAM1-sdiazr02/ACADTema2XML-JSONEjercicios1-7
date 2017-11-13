@@ -39,13 +39,13 @@ public class EscrituraXMLStAX {
 			xmlStreamWriter.writeStartElement("titulo");
 			xmlStreamWriter.writeCharacters("Acceso a Datos");
 			xmlStreamWriter.writeEndElement();
-
+			xmlStreamWriter.writeStartElement("autores");
 			do {
 				xmlStreamWriter.writeStartElement("autor");
 				xmlStreamWriter.writeCharacters(pideCadena("Introduce el nombre del autor"));
 				xmlStreamWriter.writeEndElement();
 			} while (pideCadena("¿Otro autor?").equalsIgnoreCase("si"));
-			
+			xmlStreamWriter.writeEndElement();
 			xmlStreamWriter.writeStartElement("editorial");
 			xmlStreamWriter.writeCharacters("Garceta");
 			xmlStreamWriter.writeEndElement();

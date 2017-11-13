@@ -1,1 +1,1 @@
-<?xml version="1.0" ?><libros><libro ISBN="239-87-9964-088-4"><titulo>Acceso a Datos</titulo><autor>sergio</autor><autor>magdalena</autor><editorial>Garceta</editorial></libro></libros>
+<?xml version="1.0" ?><libros><libro ISBN="239-87-9964-088-4"><titulo>Acceso a Datos</titulo><autores><autor>Sergio</autor><autor>Magdalena</autor></autores><editorial>Garceta</editorial></libro></libros>
