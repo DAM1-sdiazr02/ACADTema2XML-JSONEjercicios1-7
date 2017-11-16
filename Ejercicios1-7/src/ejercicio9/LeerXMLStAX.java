@@ -45,8 +45,10 @@ public class LeerXMLStAX {
 						empleado.setCargo(reader.getElementText());
 						break;
 					case "direccion":
+						// instancion la direccion.
 						direccion = new Direccion();
 						break;
+					// añado los campos a la direccion
 					case "ciudad":
 						direccion.setCiudad(reader.getElementText());
 						break;
@@ -63,9 +65,11 @@ public class LeerXMLStAX {
 						break;
 					}
 				}
+				//Cuando acabe direccion meto el objeto en el empleado.
 				if ((event == XMLStreamConstants.END_ELEMENT) && (reader.getLocalName() == "direccion")) {
 					empleado.setDireccion(direccion);
 				}
+				//Cuando acabe empleado lo meto en la lista.
 				if ((event == XMLStreamConstants.END_ELEMENT) && (reader.getLocalName() == "empleado")) {
 					ListEmpleados.add(empleado);
 				}

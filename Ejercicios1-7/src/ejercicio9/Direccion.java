@@ -40,6 +40,6 @@ public class Direccion {
 @Override
 public String toString() {
 	
-	return "falta hacer toString direccion.";
+	return "[Ciudad->"+ciudad+" | Provincia->"+provincia+" | Cp->"+cp+" | Calle->"+calle+"]";
 }
 }

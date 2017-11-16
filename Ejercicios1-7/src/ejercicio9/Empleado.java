@@ -59,6 +59,6 @@ public class Empleado {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "[id->"+id+", nombre: "+nombre+"]";
+		return "[id->"+id+" | Nombre->"+nombre+" | Apellidos->"+apellidos+" | Salario->"+salario+" | Cargo->"+cargo+"]\n\tDirección->"+direccion+"\n";
 	}
 }
