@@ -3,6 +3,7 @@ package ejercicio9;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.stream.XMLInputFactory;
@@ -65,19 +66,25 @@ public class LeerXMLStAX {
 						break;
 					}
 				}
-				//Cuando acabe direccion meto el objeto en el empleado.
+				// Cuando acabe direccion meto el objeto en el empleado.
 				if ((event == XMLStreamConstants.END_ELEMENT) && (reader.getLocalName() == "direccion")) {
 					empleado.setDireccion(direccion);
 				}
-				//Cuando acabe empleado lo meto en la lista.
+				// Cuando acabe empleado lo meto en la lista.
 				if ((event == XMLStreamConstants.END_ELEMENT) && (reader.getLocalName() == "empleado")) {
 					ListEmpleados.add(empleado);
 				}
 			}
+			
+			//Ordeno la coleccion ( sort tiene @override ).
+			Collections.sort(ListEmpleados);
 
 			// Muestro los empleados
 			for (int i = 0; i < ListEmpleados.size(); i++) {
-				System.out.println(ListEmpleados.get(i));
+				if (ListEmpleados.get(i).getSalario() >= 30000) {
+					System.out.println(ListEmpleados.get(i));
+				}
+
 			}
 
 		} catch (FileNotFoundException e) {
@@ -88,4 +95,5 @@ public class LeerXMLStAX {
 			e.printStackTrace();
 		}
 	}
+
 }

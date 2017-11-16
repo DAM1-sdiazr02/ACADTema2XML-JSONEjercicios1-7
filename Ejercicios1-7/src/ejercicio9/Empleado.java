@@ -1,6 +1,6 @@
 package ejercicio9;
 
-public class Empleado {
+public class Empleado implements Comparable<Empleado> {
 	private int id;
 	private String nombre;
 	private String apellidos;
@@ -59,6 +59,19 @@ public class Empleado {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "[id->"+id+" | Nombre->"+nombre+" | Apellidos->"+apellidos+" | Salario->"+salario+" | Cargo->"+cargo+"]\n\tDirección->"+direccion+"\n";
+		return "[id->" + id + " | Nombre->" + nombre + " | Apellidos->" + apellidos + " | Salario->" + salario
+				+ " | Cargo->" + cargo + "]\n\tDirección->" + direccion + "\n";
+	}
+
+	//Sobreescribo compareTo para que compare el salario de los objetos y los ordene en función de ello.
+	@Override
+	public int compareTo(Empleado o) {
+		if (salario < o.getSalario()) {
+			return -1;
+		}
+		if (salario > o.getSalario()) {
+			return 1;
+		}
+		return 0;
 	}
 }
